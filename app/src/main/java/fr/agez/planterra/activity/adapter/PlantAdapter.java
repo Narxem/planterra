@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.joda.time.format.DateTimeFormatter;
+
 import java.util.List;
 
 import fr.agez.planterra.R;
 import fr.agez.planterra.data.Plant;
-
+import fr.agez.planterra.data.util.DateFormatter;
 
 
 /**
@@ -34,8 +36,10 @@ public class PlantAdapter extends ArrayAdapter<Plant> {
 
 
         TextView nameView = (TextView) convertView.findViewById(R.id.plant_name);
+        TextView lastWatering = (TextView)  convertView.findViewById(R.id.plant_last_watered);
 
         nameView.setText(plant.getName());
+        lastWatering.setText(DateFormatter.get().format(plant.getLastWatered()));
 
         return convertView;
     }

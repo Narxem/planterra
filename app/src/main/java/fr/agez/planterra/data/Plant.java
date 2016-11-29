@@ -3,6 +3,7 @@ package fr.agez.planterra.data;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import org.joda.time.Duration;
 import org.joda.time.LocalDate;
 
 /**
@@ -17,22 +18,22 @@ public class Plant {
     @DatabaseField(canBeNull = false)
     protected String name;
 
-    @DatabaseField()
+    @DatabaseField(canBeNull = false)
     protected LocalDate lastWatered;
 
-    protected Plant() {
+    @DatabaseField
+    protected Duration wateringInterval;
 
-    }
+    Plant() {}
 
-    public Plant(String name) {
+    public Plant(String name, Duration wateringInterval) {
         this.name = name;
+        this.wateringInterval = wateringInterval;
+        this.lastWatered = LocalDate.now();
     }
 
-
-
-    
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -47,7 +48,20 @@ public class Plant {
         this.lastWatered = lastWatered;
     }
 
+    public Duration getWateringInterval() {
+        return wateringInterval;
+    }
 
+    public void setWateringInterval(Duration wateringInterval) {
+        this.wateringInterval = wateringInterval;
+    }
 
+    public Integer getId() {
 
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

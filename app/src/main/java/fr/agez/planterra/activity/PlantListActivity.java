@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import org.joda.time.Duration;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,16 +24,15 @@ import fr.agez.planterra.data.Plant;
 public class PlantListActivity extends AppCompatActivity {
 
     protected ListView listView;
-    protected ListAdapter adapter;
 
     public static List<Plant> TEST;
 
     static {
         TEST = new ArrayList<>();
-        TEST.add(new Plant("1ere plante"));
-        TEST.add(new Plant("2eme plante"));
-        TEST.add(new Plant("3eme plante"));
-        TEST.add(new Plant("4eme plante"));
+        TEST.add(new Plant("1ere plante", new Duration(1000)));
+        TEST.add(new Plant("2eme plante", new Duration(1000)));
+        TEST.add(new Plant("3eme plante", new Duration(1000)));
+        TEST.add(new Plant("4eme plante", new Duration(1000)));
     }
 
 
