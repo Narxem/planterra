@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,7 +11,8 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/appBarLayout">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -25,8 +26,31 @@
     <ListView
         android:id="@+id/plant_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBarLayout">
 
     </ListView>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/populate"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/appBarLayout"
+        android:layout_marginTop="100dp"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:onClick="populateDatabase"
+        android:text="FIXTURES"/>
+
+    <Button
+        android:id="@+id/create_plant2"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/populate"
+        android:layout_marginTop="50dp"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:onClick="populateDatabase"
+        android:text="Créer une plante"/>
+
+</RelativeLayout>

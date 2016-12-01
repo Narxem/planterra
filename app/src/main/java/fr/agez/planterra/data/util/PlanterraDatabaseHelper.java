@@ -19,7 +19,7 @@ import fr.agez.planterra.data.Plant;
 public class PlanterraDatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     public static final String DATABASE_NAME = "PLANTERRA DATABASE";
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 5;
 
 
     protected RuntimeExceptionDao<Plant, Integer> plantDao = null;

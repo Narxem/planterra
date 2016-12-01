@@ -48,8 +48,13 @@ public class PlantListActivity extends AppCompatActivity {
         List <Plant> plants = dao.queryForAll();
 
         listView = (ListView) findViewById(R.id.plant_list);
-        listView.setAdapter(new PlantAdapter(this, plants));
-
+        if (!plants.isEmpty()) {
+            listView.setAdapter(new PlantAdapter(this, plants));
+        }
+        else {
+            findViewById(R.id.populate).setVisibility(View.VISIBLE);
+            findViewById(R.id.create_plant2).setVisibility(View.VISIBLE);
+        }
     }
 
 
@@ -68,9 +73,7 @@ public class PlantListActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.populate) {
-            populateDatabase();
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -82,23 +85,25 @@ public class PlantListActivity extends AppCompatActivity {
         return helper;
     }
 
-    protected void populateDatabase() {
+    protected void populateDatabase(View v) {
 
         getHelper().getPlantDao();
 
-        dao.create(new Plant("Pelargonium", new Duration(10)));
-        dao.create(new Plant("Geranium", new Duration(5)));
-        dao.create(new Plant("Primevère", new Duration(3)));
-        dao.create(new Plant("Bégonia", new Duration(3)));
-        dao.create(new Plant("Passiflore", new Duration(5)));
-        dao.create(new Plant("Muguet", new Duration(4)));
-        dao.create(new Plant("Mandragore", new Duration(1)));
-        dao.create(new Plant("Branchiflore", new Duration(6)));
-        dao.create(new Plant("Bubobulb", new Duration(2)));
-        dao.create(new Plant("Mimbulus Mimbletonia", new Duration(8)));
+        dao.create(new Plant("Pelargonium", 1));
+        dao.create(new Plant("Geranium", 5));
+        dao.create(new Plant("Primevère", 3));
+        dao.create(new Plant("Bégonia", 3));
+        dao.create(new Plant("Passiflore", 5));
+        dao.create(new Plant("Muguet", 4));
+        dao.create(new Plant("Mandragore", 1));
+        dao.create(new Plant("Branchiflore", 6));
+        dao.create(new Plant("Bubobulb", 2));
+        dao.create(new Plant("Mimbulus Mimbletonia", 8));
 
 
         listView.setAdapter(new PlantAdapter(this, dao.queryForAll()));
+        v.setVisibility(View.INVISIBLE);
+        findViewById(R.id.create_plant2).setVisibility(View.INVISIBLE);
     }
 
 }

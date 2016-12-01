@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.util.List;
@@ -22,6 +23,7 @@ import fr.agez.planterra.data.util.DateFormatter;
 
 public class PlantAdapter extends ArrayAdapter<Plant> {
 
+    DateFormatter formatter = DateFormatter.get();
 
     public PlantAdapter(Context context, List<Plant> plants) {
         super(context, R.layout.plant_item, plants);
@@ -36,10 +38,11 @@ public class PlantAdapter extends ArrayAdapter<Plant> {
 
 
         TextView nameView = (TextView) convertView.findViewById(R.id.plant_name);
-        TextView lastWatering = (TextView)  convertView.findViewById(R.id.plant_last_watered);
+        TextView nextWateringView = (TextView)  convertView.findViewById(R.id.plant_next_watering);
 
         nameView.setText(plant.getName());
-        lastWatering.setText(DateFormatter.get().format(plant.getLastWatered()));
+        LocalDate nextWatering = plant.getLastWatered().plusDays(plant.getMaxDaysBetweenWatering());
+        nextWateringView.setText("Prochain arrosage : " + formatter.format(nextWatering));
 
         return convertView;
     }

@@ -20,14 +20,14 @@ public class Plant {
     protected String name;
     @DatabaseField(canBeNull = false, dataType = DataType.SERIALIZABLE)
     protected LocalDate lastWatered;
-    @DatabaseField(dataType = DataType.SERIALIZABLE)
-    protected Duration wateringInterval;
+    @DatabaseField
+    protected int maxDaysBetweenWatering;
 
     Plant() {}
 
-    public Plant(String name, Duration wateringInterval) {
+    public Plant(String name, int maxDaysBetweenWatering) {
         this.name = name;
-        this.wateringInterval = wateringInterval;
+        this.maxDaysBetweenWatering = maxDaysBetweenWatering;
         this.lastWatered = LocalDate.now();
     }
 
@@ -47,12 +47,6 @@ public class Plant {
         this.lastWatered = lastWatered;
     }
 
-    public Duration getWateringInterval() {
-        return wateringInterval;
-    }
-
-    public void setWateringInterval(Duration wateringInterval) { this.wateringInterval = wateringInterval;}
-
     public Integer getId() {
         return id;
     }
@@ -61,12 +55,13 @@ public class Plant {
         this.id = id;
     }
 
-
-    public boolean equals(Object o) {
-        if (!(o instanceof Plant))
-            return false;
-        Plant that = (Plant) o;
-        return this.name == that.name;
+    public int getMaxDaysBetweenWatering() {
+        return maxDaysBetweenWatering;
     }
+
+    public void setMaxDaysBetweenWatering(int maxDaysBetweenWatering) {
+        this.maxDaysBetweenWatering = maxDaysBetweenWatering;
+    }
+
 
 }

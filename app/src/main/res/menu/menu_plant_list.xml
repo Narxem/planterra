@@ -6,9 +6,6 @@
         android:id="@+id/create_plant"
         android:orderInCategory="100"
         android:title="Créer une plante" />
-    <item
-        android:id="@+id/populate"
-        android:title="Créer valeurs de test"
-        android:orderInCategory="101" />
+
 
 </menu>
