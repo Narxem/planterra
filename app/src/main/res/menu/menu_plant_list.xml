@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="fr.agez.planterra.activity.PlantListActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/create_plant"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="Créer une plante" />
+    <item
+        android:id="@+id/populate"
+        android:title="Créer valeurs de test"
+        android:orderInCategory="101" />
 
 </menu>

@@ -1,5 +1,6 @@
 package fr.agez.planterra.data;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -10,18 +11,16 @@ import org.joda.time.LocalDate;
  * @author Adrien Agez
  */
 
-@DatabaseTable(tableName = "Plants", daoClass = PlantDao.class)
+@DatabaseTable(tableName = "Plants")
 public class Plant {
 
-    @DatabaseField(id = true, generatedId = true)
-    protected Integer id;
+    @DatabaseField(generatedId = true)
+    protected int id;
     @DatabaseField(canBeNull = false)
     protected String name;
-
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false, dataType = DataType.SERIALIZABLE)
     protected LocalDate lastWatered;
-
-    @DatabaseField
+    @DatabaseField(dataType = DataType.SERIALIZABLE)
     protected Duration wateringInterval;
 
     Plant() {}
@@ -52,16 +51,22 @@ public class Plant {
         return wateringInterval;
     }
 
-    public void setWateringInterval(Duration wateringInterval) {
-        this.wateringInterval = wateringInterval;
-    }
+    public void setWateringInterval(Duration wateringInterval) { this.wateringInterval = wateringInterval;}
 
     public Integer getId() {
-
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
+
+
+    public boolean equals(Object o) {
+        if (!(o instanceof Plant))
+            return false;
+        Plant that = (Plant) o;
+        return this.name == that.name;
+    }
+
 }
