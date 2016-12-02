@@ -85,11 +85,13 @@ public class PlantListActivity extends AppCompatActivity {
     protected void updateView() {
         plants = dao.queryForAll();
         if (plants.isEmpty()) {
+            listView.setVisibility(View.INVISIBLE);
             findViewById(R.id.populate).setVisibility(View.VISIBLE);
             findViewById(R.id.create_plant2).setVisibility(View.VISIBLE);
         }else {
             findViewById(R.id.populate).setVisibility(View.INVISIBLE);
             findViewById(R.id.create_plant2).setVisibility(View.INVISIBLE);
+            listView.setVisibility(View.VISIBLE);
             listView.setAdapter(new PlantAdapter(this, plants));
         }
 
@@ -128,10 +130,10 @@ public class PlantListActivity extends AppCompatActivity {
 
         getHelper().getPlantDao();
 
-        Plant plant = new Plant("Pélargonium", 2);
-        plant.setLastWatered(LocalDate.now().minusDays(1));
+        Plant plant = new Plant("Pélargonium", 4);
+        plant.setLastWatered(LocalDate.now().minusDays(3));
 
-        dao.create(new Plant("Pelargonium", 2));
+        dao.create(plant);
         dao.create(new Plant("Geranium", 5));
         dao.create(new Plant("Primevère", 3));
         dao.create(new Plant("Bégonia", 3));

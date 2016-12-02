@@ -59,7 +59,7 @@
         android:id="@+id/validate_create"
         android:layout_below="@+id/edit_days_btw_watering"
         android:layout_centerHorizontal="true"
-        android:onClick="updatePlant"/>
+        android:onClick="addPlant"/>
 
     <TextView
         android:layout_width="wrap_content"
