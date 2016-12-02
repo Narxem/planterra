@@ -7,12 +7,14 @@ import com.j256.ormlite.table.DatabaseTable;
 import org.joda.time.Duration;
 import org.joda.time.LocalDate;
 
+import java.io.Serializable;
+
 /**
  * @author Adrien Agez
  */
 
 @DatabaseTable(tableName = "Plants")
-public class Plant {
+public class Plant implements Serializable {
 
     @DatabaseField(generatedId = true)
     protected int id;

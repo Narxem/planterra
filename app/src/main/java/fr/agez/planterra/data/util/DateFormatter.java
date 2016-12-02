@@ -21,7 +21,7 @@ public class DateFormatter {
     }
     // ##############################################################
 
-    private final DateTimeFormatter format = DateTimeFormat.forPattern("E dd MM");
+    private final DateTimeFormatter format = DateTimeFormat.forPattern("E dd MMM");
 
     public String format(LocalDate date) {
         return date.toString(format);

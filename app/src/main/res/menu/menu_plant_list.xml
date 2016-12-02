@@ -1,11 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="fr.agez.planterra.activity.PlantListActivity">
     <item
         android:id="@+id/create_plant"
         android:orderInCategory="100"
-        android:title="Créer une plante" />
+        android:title="Créer une plante"
+        />
 
 
 </menu>

@@ -50,7 +50,7 @@
         android:layout_marginTop="50dp"
         android:visibility="invisible"
         android:layout_centerHorizontal="true"
-        android:onClick="populateDatabase"
+        android:onClick="toAddPlant"
         android:text="Créer une plante"/>
 
 </RelativeLayout>

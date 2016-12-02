@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_plant"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="fr.agez.planterra.activity.PlantInfoActivity">
+
+
+
+
+    <!-- PLANT NAME -->
+    <TextView
+        android:text="Nom de la plante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="plant name"
+        android:id="@+id/textView" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Nom de la plante"
+        android:id="@+id/edit_name"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+
+    <!-- WATERING FREQUENCE -->
+
+    <TextView
+        android:text="Fréquence d'arrosage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edit_days_btw_watering"
+        android:layout_alignBottom="@+id/edit_days_btw_watering"
+        />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="En jours"
+        android:ems="10"
+        android:id="@+id/edit_days_btw_watering"
+        android:layout_below="@+id/edit_name"
+        android:layout_alignParentEnd="true" />
+    <!-- OTHER STUFFS -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/validate_create"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/add_error"
+        android:textColor="#C00"/>
+
+    <Button
+        android:text="Modifier la plante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:id="@+id/validate_create"
+        android:onClick="updatePlant"
+        android:layout_below="@+id/edit_days_btw_watering"
+        android:layout_toEndOf="@+id/add_error" />
+
+    <Button
+        android:text="Supprimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/validate_create"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:id="@+id/delete"
+        android:onClick="delete" />
+
+</RelativeLayout>

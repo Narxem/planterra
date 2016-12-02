@@ -1,12 +1,14 @@
 package fr.agez.planterra.activity.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -42,7 +44,16 @@ public class PlantAdapter extends ArrayAdapter<Plant> {
 
         nameView.setText(plant.getName());
         LocalDate nextWatering = plant.getLastWatered().plusDays(plant.getMaxDaysBetweenWatering());
-        nextWateringView.setText("Prochain arrosage : " + formatter.format(nextWatering));
+        int daysBeforeNextWatering = Days.daysBetween(LocalDate.now(), nextWatering).getDays();
+        nextWateringView.setText("Prochain arrosage : " + formatter.format(nextWatering) + " (" + daysBeforeNextWatering + ")");
+
+        if (daysBeforeNextWatering > 1) {
+            convertView.setBackgroundColor(Color.rgb(95, 175, 55));
+        } else if (daysBeforeNextWatering == 1 || daysBeforeNextWatering == 0) {
+            convertView.setBackgroundColor(Color.rgb(225, 110, 50));
+        }
+        else
+            convertView.setBackgroundColor(Color.rgb(225, 30, 30));
 
         return convertView;
     }
